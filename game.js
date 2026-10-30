@@ -179,4 +179,3 @@ function resetMobileViewport(){if(window.matchMedia('(max-width:950px)').matches
 window.addEventListener('orientationchange',()=>setTimeout(resetMobileViewport,350));
 window.addEventListener('resize',()=>setTimeout(resetMobileViewport,80));
 resetMobileViewport();
-

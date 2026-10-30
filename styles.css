@@ -104,4 +104,3 @@ html.phone-landscape .table-actions{bottom:48px;min-height:27px}html.phone-lands
   html.phone-landscape .game-shell{position:fixed;left:0;top:0;right:auto;bottom:auto;width:100dvh;height:100dvw;max-width:none;margin:0;padding:3px;overflow:hidden;transform-origin:top left;transform:rotate(90deg) translateY(-100%)}
   html.phone-landscape .table{height:calc(100dvw - 100px);min-height:0}
 }
-
