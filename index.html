@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>开原麻将</title>
+  <script>
+    function markPhoneLayout(){
+      const w=window.innerWidth,h=window.innerHeight;
+      const phone=Math.min(w,h)<=760&&Math.max(w,h)<=1100;
+      document.documentElement.classList.toggle('phone-landscape',phone);
+      document.documentElement.style.setProperty('--portrait-game-scale',Math.min(w/950,1));
+    }
+    markPhoneLayout();
+    window.addEventListener('resize',markPhoneLayout);
+    window.addEventListener('orientationchange',()=>setTimeout(markPhoneLayout,200));
+  </script>
+  <link rel="stylesheet" href="styles.css?v=20261030-4">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div><h1>开原麻将 <small>朱思宇制作</small></h1></div>
+      <div class="session-actions"><button id="startGame">开始游戏</button><button id="endGame" class="danger" disabled>结束游戏</button><button id="newGame" class="ghost">重新开局</button><button id="soundToggle" class="ghost">🔊 音效开</button></div>
+    </header>
+    <div id="scoreBoard" class="score-board"></div>
+    <section class="table" aria-label="麻将桌">
+      <div id="dealWalls" class="deal-walls" aria-hidden="true"></div>
+      <div class="flower-preview"><span>本局开花牌<small>最高牌型</small></span><div id="flowerTile"></div></div>
+      <div id="player2" class="seat seat-top"></div>
+      <div id="player1" class="seat seat-right"></div>
+      <div id="player3" class="seat seat-left"></div>
+      <div class="center">
+        <div class="wall"><span>余牌</span><strong id="wallCount">0</strong></div>
+        <div id="status" class="status">准备开局</div>
+        <div id="lastDiscard" class="last-discard"></div>
+      </div>
+      <div id="river0" class="player-river river-bottom"></div>
+      <div id="river1" class="player-river river-right"></div>
+      <div id="river2" class="player-river river-top"></div>
+      <div id="river3" class="player-river river-left"></div>
+      <div id="actionButtons" class="actions table-actions"></div>
+      <div id="player0" class="seat seat-bottom"></div>
+    </section>
+    <section class="controls">
+      <p id="hint">点击一张手牌将它打出。</p>
+    </section>
+  </main>
+  <div id="dialog" class="dialog hidden"><div class="dialog-card"><h2 id="dialogTitle"></h2><p id="dialogText"></p><div id="winningTile" class="winning-tile"></div><button id="dialogButton">下一局</button></div></div>
+  <div id="choiceDialog" class="dialog choice-dialog hidden"><div class="dialog-card"><h2 id="choiceTitle"></h2><p id="choiceText"></p><div id="choiceButtons" class="choice-buttons"></div></div></div>
+  <script src="game.js?v=20261030-1"></script>
+</body>
+</html>
+
